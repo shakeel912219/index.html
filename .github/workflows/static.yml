@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Invitation</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fdfdfd url('https://cdn.pixabay.com/photo/2016/03/05/19/02/flowers-1230023_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #1a1a1a;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    h1, h2 {
+      color: darkgreen;
+    }
+    .countdown {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+    .button {
+      background: darkgreen;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .butterfly {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: url('https://cdn.pixabay.com/photo/2013/07/12/14/07/butterfly-147138_1280.png') no-repeat center center;
+      background-size: contain;
+      animation: float 10s infinite linear;
+      opacity: 0.8;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0); }
+      100% { transform: translateY(-10vh) translateX(100vw); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="butterfly" style="top: 80%; left: 10%; animation-delay: 0s;"></div>
+  <div class="butterfly" style="top: 90%; left: 30%; animation-delay: 2s;"></div>
+  <div class="butterfly" style="top: 85%; left: 50%; animation-delay: 4s;"></div>
+
+  <h2>Bismillah Hirrahmaa Nirraheem</h2>
+  <h1>Wedding Invitation</h1>
+  
+  <p><strong>Syed Ibrahim – Nazima</strong><br>
+  (Ishaqmiya Street - Kavali, SPSR, Nellore Dist.)</p>
+
+  <p>We solicit your gracious presence on the auspicious occasion of the marriage of our only son</p>
+  <h2>Syed Shakeel</h2>
+  <p>Senior Associate</p>
+
+  <p>With</p>
+
+  <h2>Shaik Afsana</h2>
+  <p>Software Engineer</p>
+  <p>Daughter of Janab Shaik Abdul Munaf – Shahin<br>
+  (Ishaqmiya Street, Kavali, SPSR, Nellore Dist.)</p>
+
+  <p><strong>Haldi:</strong> Wednesday, 14<sup>th</sup> May 2025 (Evening) at Our Residence, Kavali</p>
+
+  <div class="countdown" id="countdown">
+    Loading countdown...
+  </div>
+
+  <h2>Insha Allah</h2>
+  <p><strong>Nikah:</strong> Thursday, 15<sup>th</sup> May 2025<br>
+  Between 11:00 a.m. to 12:00 Noon</p>
+  <p><strong>Venue:</strong> Mannem Gopala Krishna Reddy Kalyana Mandapam,<br>
+  Beside Bhashyam School, Gayathri Nagar, Trunk Road, Kavali</p>
+
+  <a class="button" href="https://youtube.com/live/YOUR-LIVE-LINK" target="_blank">WATCH LIVE</a>
+
+  <p><strong>Lunch Follows</strong></p>
+  <p><em>With Best Compliments From: Friends & Family Members</em></p>
+
+  <script>
+    const eventDate = new Date("May 15, 2025 11:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = "The Wedding Has Started!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `
+        ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds
+      `;
+    }, 1000);
+  </script>
+
+</body>
+</html>
